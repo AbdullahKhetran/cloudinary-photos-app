@@ -3,8 +3,9 @@ import UploadButton from "./upload-button";
 import cloudinary from "cloudinary"
 import CloudinaryImage from "./cloudinary-image";
 
-type SearchResult = {
+export type SearchResult = {
     public_id: string
+    tags: string[]
 }
 
 export default async function GalleryPage() {
@@ -12,6 +13,7 @@ export default async function GalleryPage() {
     const result = await cloudinary.v2.search
         .expression('resource_type:image')
         .sort_by('created_at', 'desc')
+        .with_field("tags")
         .max_results(10)
         .execute() as { resources: SearchResult[] }
 
@@ -29,7 +31,8 @@ export default async function GalleryPage() {
                         <div key={r.public_id}>
                             <CloudinaryImage
                                 key={r.public_id}
-                                publicId={r.public_id}
+                                public_id={r.public_id}
+                                tags={r.tags}
                             />
                         </div>
                     ))}
