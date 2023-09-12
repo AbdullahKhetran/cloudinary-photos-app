@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import Heart from '@/components/icons/heart'
 import Folder from '@/components/icons/folder'
 import Gallery from '@/components/icons/gallery'
+import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -24,18 +25,26 @@ function SideBar() {
             Manage
           </h2>
           <div className="space-y-1">
-            <Button variant="secondary" className="w-full justify-start flex gap-2">
-              <Gallery />
-              Gallery
-            </Button>
-            <Button variant="ghost" className="w-full justify-start flex gap-2">
-              <Folder />
-              Albums
-            </Button>
-            <Button variant="ghost" className="w-full justify-start flex gap-2">
-              <Heart />
-              Favorites
-            </Button>
+            <Link href="/gallery" >
+              <Button variant="ghost" className="w-full justify-start flex gap-2">
+                <Gallery />
+                Gallery
+              </Button>
+            </Link>
+
+            <Link href="/albums" >
+              <Button variant="ghost" className="w-full justify-start flex gap-2">
+                <Folder />
+                Albums
+              </Button>
+            </Link>
+
+            <Link href="favorites">
+              <Button variant="ghost" className="w-full justify-start flex gap-2">
+                <Heart />
+                Favorites
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
