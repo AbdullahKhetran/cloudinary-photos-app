@@ -2,6 +2,7 @@ import { CldImage } from "next-cloudinary";
 import UploadButton from "./upload-button";
 import cloudinary from "cloudinary"
 import CloudinaryImage from "./cloudinary-image";
+import ImageGrid from "@/components/image-grid";
 
 export type SearchResult = {
     public_id: string
@@ -14,10 +15,11 @@ export default async function GalleryPage() {
         .expression('resource_type:image')
         .sort_by('created_at', 'desc')
         .with_field("tags")
-        .max_results(10)
+        .max_results(20)
         .execute() as { resources: SearchResult[] }
 
-    console.log(result)
+    // @ts-ignore
+    console.log(result.rate_limit_remaining)
 
     return (
         <section>
@@ -26,17 +28,9 @@ export default async function GalleryPage() {
                     <h1 className="text-4xl font-bold">Gallery</h1>
                     <UploadButton />
                 </div>
-                <div className="grid grid-cols-4 gap-4">
-                    {result.resources.map(r => (
-                        <div key={r.public_id}>
-                            <CloudinaryImage
-                                key={r.public_id}
-                                public_id={r.public_id}
-                                tags={r.tags}
-                            />
-                        </div>
-                    ))}
-                </div>
+
+                <ImageGrid images={result.resources} />
+
             </div>
         </section>
     )
