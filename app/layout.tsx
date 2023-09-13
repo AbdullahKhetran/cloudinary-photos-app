@@ -32,12 +32,12 @@ function SideBar() {
               </Button>
             </Link>
 
-            <Link href="/albums" >
+            {/* <Link href="/albums" >
               <Button variant="ghost" className="w-full justify-start flex gap-2">
                 <Folder />
                 Albums
               </Button>
-            </Link>
+            </Link> */}
 
             <Link href="favorites">
               <Button variant="ghost" className="w-full justify-start flex gap-2">
