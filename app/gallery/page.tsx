@@ -1,4 +1,3 @@
-import { CldImage } from "next-cloudinary";
 import UploadButton from "./upload-button";
 import cloudinary from "cloudinary"
 import CloudinaryImage from "./cloudinary-image";
@@ -29,7 +28,15 @@ export default async function GalleryPage() {
                     <UploadButton />
                 </div>
 
-                <ImageGrid images={result.resources} />
+                <ImageGrid images={result.resources}
+                    getImage={(imageData: SearchResult) => {
+                        return <CloudinaryImage
+                            key={imageData.public_id}
+                            public_id={imageData.public_id}
+                            tags={imageData.tags}
+                        />
+                    }}
+                />
 
             </div>
         </section>
