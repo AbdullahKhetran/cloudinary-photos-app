@@ -6,6 +6,7 @@ import { setAsFavorite } from "../app/gallery/actions"
 import { useState, useTransition } from "react"
 import { SearchResult } from "../app/gallery/page"
 import FullHeart from "@/components/icons/full-heart"
+import { DropdownMenuCheckboxes } from "./image-menu"
 
 
 type Prop = {
@@ -36,7 +37,7 @@ export default function CloudinaryImage({ public_id, tags, onUnheart }: Prop) {
                             setAsFavorite(public_id, false)
                         })
                     }}
-                    className="absolute top-2 right-2 text-red-500 hover:text-white cursor-pointer " />
+                    className="absolute top-2 left-2 text-red-500 hover:text-white cursor-pointer " />
                 : <Heart
                     onClick={() => {
                         setIsFavorited(true)
@@ -44,8 +45,9 @@ export default function CloudinaryImage({ public_id, tags, onUnheart }: Prop) {
                             setAsFavorite(public_id, true)
                         })
                     }}
-                    className="absolute top-2 right-2 hover:text-red-500 cursor-pointer " />
+                    className="absolute top-2 left-2 hover:text-red-500 cursor-pointer " />
             }
+            <DropdownMenuCheckboxes />
         </div>
     )
 }
