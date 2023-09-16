@@ -1,6 +1,4 @@
-import { CldImage } from "next-cloudinary";
 import cloudinary from "cloudinary"
-import CloudinaryImage from "../../components/cloudinary-image";
 import { SearchResult } from "../gallery/page";
 import ForceRefresh from "@/components/force-refresh";
 import FavoritesList from "./favorites-list";
@@ -24,9 +22,6 @@ export default async function FavoritesPage() {
                 </div>
 
                 <FavoritesList initialResources={result.resources} />
-
-
-
             </div>
         </section>
     )

@@ -4,7 +4,6 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { Button } from '@/components/ui/button'
 import Heart from '@/components/icons/heart'
-import Folder from '@/components/icons/folder'
 import Gallery from '@/components/icons/gallery'
 import Link from 'next/link'
 

@@ -1,9 +1,7 @@
 "use client"
-import { CldImage } from "next-cloudinary";
-import cloudinary from "cloudinary"
+
 import CloudinaryImage from "../../components/cloudinary-image";
 import { SearchResult } from "../gallery/page";
-import ForceRefresh from "@/components/force-refresh";
 import { useEffect, useState } from "react";
 import ImageGrid from "@/components/image-grid";
 

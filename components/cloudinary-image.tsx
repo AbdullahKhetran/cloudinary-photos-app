@@ -1,7 +1,6 @@
 "use client"
 import Heart from "@/components/icons/heart"
 import { CldImage } from "next-cloudinary"
-import cloudinary from "cloudinary"
 import { setAsFavorite } from "../app/gallery/actions"
 import { useState, useTransition } from "react"
 import { SearchResult } from "../app/gallery/page"
