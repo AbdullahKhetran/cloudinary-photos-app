@@ -2,9 +2,9 @@
 import Heart from "@/components/icons/heart"
 import { CldImage } from "next-cloudinary"
 import cloudinary from "cloudinary"
-import { setAsFavorite } from "./actions"
+import { setAsFavorite } from "../app/gallery/actions"
 import { useState, useTransition } from "react"
-import { SearchResult } from "./page"
+import { SearchResult } from "../app/gallery/page"
 import FullHeart from "@/components/icons/full-heart"
 
 
