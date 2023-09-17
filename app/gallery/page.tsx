@@ -1,6 +1,6 @@
-import UploadButton from "./upload-button";
+import UploadButton from "@/app/gallery/upload-button";
 import cloudinary from "cloudinary"
-import CloudinaryImage from "../../components/cloudinary-image";
+import CloudinaryImage from "@/components/cloudinary-image";
 import ImageGrid from "@/components/image-grid";
 
 export type SearchResult = {

@@ -1,7 +1,7 @@
 import cloudinary from "cloudinary"
-import { SearchResult } from "../gallery/page";
+import { SearchResult } from "@/app/gallery/page";
 import ForceRefresh from "@/components/force-refresh";
-import FavoritesList from "./favorites-list";
+import FavoritesList from "@/app/favorites/favorites-list";
 
 
 export default async function FavoritesPage() {
