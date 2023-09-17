@@ -1,25 +1,27 @@
+import Menu from "@/components/icons/menu"
+import { FolderPlus } from "@/components/icons/folder-plus"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 import {
     Dialog,
     DialogContent,
     DialogDescription,
+    DialogFooter,
     DialogHeader,
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
-
-import { Button } from "@/components/ui/button"
 import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import Menu from "./icons/menu"
-import { FolderPlus } from "./icons/folder-plus"
+
 
 export default function AddToAlbumDialog() {
     return (
-
         <DropdownMenu >
             <DropdownMenuTrigger asChild>
                 <Button variant="outline" className="w-8 h-8 p-0">
@@ -28,28 +30,33 @@ export default function AddToAlbumDialog() {
             </DropdownMenuTrigger>
             <DropdownMenuContent >
                 <Dialog>
-                    <DialogTrigger>
-                        <div className="flex gap-2">
+                    <DialogTrigger asChild>
+                        <Button variant="outline" className="flex gap-2">
                             <FolderPlus />
-                            Add To Album
-                        </div>
+                            <h1> Add To Album</h1>
+                        </Button>
                     </DialogTrigger>
-                    <DialogContent>
+                    <DialogContent className="sm:max-w-[425px]">
                         <DialogHeader>
-                            <DialogTitle>Are you sure absolutely sure?</DialogTitle>
+                            <DialogTitle>Add to Album</DialogTitle>
                             <DialogDescription>
-                                This action cannot be undone. This will permanently delete your account
-                                and remove your data from our servers.
+                                Type an album you want to move this image into
                             </DialogDescription>
                         </DialogHeader>
+                        <div className="grid gap-4 py-4">
+                            <div className="grid grid-cols-4 items-center gap-4">
+                                <Label htmlFor="name" className="text-right">
+                                    Album
+                                </Label>
+                                <Input id="name" className="col-span-3" />
+                            </div>
+                        </div>
+                        <DialogFooter>
+                            <Button type="submit">Add to Album</Button>
+                        </DialogFooter>
                     </DialogContent>
                 </Dialog>
             </DropdownMenuContent>
         </DropdownMenu>
-
     )
 }
-
-// the idea to nest dialog inside dropdown was from here
-// https://github.com/radix-ui/primitives/issues/1836#issuecomment-1685120352   
-
