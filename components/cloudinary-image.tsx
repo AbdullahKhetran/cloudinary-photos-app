@@ -46,7 +46,7 @@ export default function CloudinaryImage({ public_id, tags, onUnheart }: Prop) {
                     }}
                     className="absolute top-2 left-2 hover:text-red-500 cursor-pointer " />
             }
-            <DropdownMenuCheckboxes />
+            <DropdownMenuCheckboxes imageId={public_id} />
         </div>
     )
 }

@@ -18,9 +18,17 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { useState } from "react"
+import { SearchResult } from "@/app/gallery/page"
 
+type Prop = {
+    imageId: string
+}
 
-export default function AddToAlbumDialog() {
+export default function AddToAlbumDialog({ imageId }: Prop) {
+    const [albumName, setAlbumName] = useState("")
+    const [open, setOpen] = useState(false)
+
     return (
         <DropdownMenu >
             <DropdownMenuTrigger asChild>
@@ -29,7 +37,7 @@ export default function AddToAlbumDialog() {
                 </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent >
-                <Dialog>
+                <Dialog open={open} onOpenChange={setOpen}>
                     <DialogTrigger asChild>
                         <Button variant="outline" className="flex gap-2">
                             <FolderPlus />
@@ -48,11 +56,19 @@ export default function AddToAlbumDialog() {
                                 <Label htmlFor="name" className="text-right">
                                     Album
                                 </Label>
-                                <Input id="name" className="col-span-3" />
+                                <Input
+                                    onChange={e => setAlbumName(e.currentTarget.value)}
+                                    id="album-name" value={albumName} className="col-span-3"
+                                />
                             </div>
                         </div>
                         <DialogFooter>
-                            <Button type="submit">Add to Album</Button>
+                            <Button
+                                onClick={() => {
+                                    console.log("imageId is", imageId)
+                                    setOpen(false)
+                                }}
+                                type="submit">Add to Album</Button>
                         </DialogFooter>
                     </DialogContent>
                 </Dialog>
