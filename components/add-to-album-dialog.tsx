@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { useState } from "react"
 import { SearchResult } from "@/app/gallery/page"
+import { addImageToAlbum } from "./actions"
 
 type Prop = {
     imageId: string
@@ -64,9 +65,9 @@ export default function AddToAlbumDialog({ imageId }: Prop) {
                         </div>
                         <DialogFooter>
                             <Button
-                                onClick={() => {
-                                    console.log("imageId is", imageId)
+                                onClick={async () => {
                                     setOpen(false)
+                                    await addImageToAlbum(imageId, albumName)
                                 }}
                                 type="submit">Add to Album</Button>
                         </DialogFooter>
