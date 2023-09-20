@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import Heart from '@/components/icons/heart'
 import Gallery from '@/components/icons/gallery'
 import Link from 'next/link'
+import Folder from '@/components/icons/folder'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -31,12 +32,12 @@ function SideBar() {
               </Button>
             </Link>
 
-            {/* <Link href="/albums" >
+            <Link href="/albums" >
               <Button variant="ghost" className="w-full justify-start flex gap-2">
                 <Folder />
                 Albums
               </Button>
-            </Link> */}
+            </Link>
 
             <Link href="favorites">
               <Button variant="ghost" className="w-full justify-start flex gap-2">
