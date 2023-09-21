@@ -2,6 +2,7 @@ import cloudinary from "cloudinary"
 import CloudinaryImage from "@/components/cloudinary-image";
 import ImageGrid from "@/components/image-grid";
 import { SearchResult } from "@/app/gallery/page";
+import ForceRefresh from "@/components/force-refresh";
 
 
 export default async function AlbumPage({ params }: { params: { album: string } }) {
@@ -17,6 +18,9 @@ export default async function AlbumPage({ params }: { params: { album: string } 
 
     return (
         <section>
+
+            <ForceRefresh />
+
             <div className="flex flex-col gap-8">
                 <div className="flex justify-between">
                     <h1 className="text-4xl font-bold">Album {params.album} </h1>
