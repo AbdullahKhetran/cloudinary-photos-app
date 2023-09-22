@@ -20,7 +20,9 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { useState } from "react"
 import { SearchResult } from "@/app/gallery/page"
-import { addImageToAlbum } from "./actions"
+import { addImageToAlbum } from "@/components/actions"
+import Link from "next/link"
+import { Pencil } from "lucide-react"
 
 type Prop = {
     imageId: string
@@ -37,14 +39,24 @@ export default function AddToAlbumDialog({ imageId }: Prop) {
                     <Menu />
                 </Button>
             </DropdownMenuTrigger>
+
             <DropdownMenuContent >
                 <Dialog open={open} onOpenChange={setOpen}>
                     <DialogTrigger asChild>
-                        <Button variant="outline" className="flex gap-2">
-                            <FolderPlus />
-                            <h1> Add To Album</h1>
-                        </Button>
+                        <div>
+                            <Button variant="outline" className="flex gap-2">
+                                <FolderPlus />
+                                <h1> Add To Album</h1>
+                            </Button>
+                            <Link href={`/edit/${imageId}`}>
+                                <Button variant="outline" className=" w-full flex gap-2 justify-start">
+                                    <Pencil size={22} />
+                                    <h1>Edit</h1>
+                                </Button>
+                            </Link>
+                        </div>
                     </DialogTrigger>
+
                     <DialogContent className="sm:max-w-[425px]">
                         <DialogHeader>
                             <DialogTitle>Add to Album</DialogTitle>
@@ -52,6 +64,7 @@ export default function AddToAlbumDialog({ imageId }: Prop) {
                                 Type an album you want to move this image into
                             </DialogDescription>
                         </DialogHeader>
+
                         <div className="grid gap-4 py-4">
                             <div className="grid grid-cols-4 items-center gap-4">
                                 <Label htmlFor="name" className="text-right">
@@ -63,6 +76,7 @@ export default function AddToAlbumDialog({ imageId }: Prop) {
                                 />
                             </div>
                         </div>
+
                         <DialogFooter>
                             <Button
                                 onClick={async () => {
