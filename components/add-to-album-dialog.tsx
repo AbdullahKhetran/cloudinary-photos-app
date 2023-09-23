@@ -57,6 +57,7 @@ export default function AddToAlbumDialog({ imageId }: Prop) {
                         </div>
                     </DialogTrigger>
 
+                    {/* Dialog that asks for album name */}
                     <DialogContent className="sm:max-w-[425px]">
                         <DialogHeader>
                             <DialogTitle>Add to Album</DialogTitle>
