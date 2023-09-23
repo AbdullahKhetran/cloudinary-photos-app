@@ -52,12 +52,12 @@ export default function AddToAlbumDialog({ imageId }: Prop) {
                 >
                     <DialogTrigger asChild>
                         <div>
-                            <Button variant="outline" className="flex gap-2">
+                            <Button variant="ghost" className="flex gap-2 border-b px-1">
                                 <FolderPlus />
                                 <h1> Add To Album</h1>
                             </Button>
                             <Link href={`/edit/${imageId}`}>
-                                <Button variant="outline" className=" w-full flex gap-2 justify-start">
+                                <Button variant="ghost" className="w-full flex gap-2 justify-start px-1">
                                     <Pencil size={22} />
                                     <h1>Edit</h1>
                                 </Button>
