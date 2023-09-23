@@ -16,7 +16,7 @@ export default function ImageGrid({ images, getImage }: Prop) {
         })
     }
     return (
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
             {[getColumns(0), getColumns(1), getColumns(2), getColumns(3)].map(
                 (column, index) => (
                     <div key={index} className="flex flex-col gap-4">
