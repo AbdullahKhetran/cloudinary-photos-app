@@ -19,7 +19,6 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { useState } from "react"
-import { SearchResult } from "@/app/gallery/page"
 import { addImageToAlbum } from "@/components/actions"
 import Link from "next/link"
 import { Pencil } from "lucide-react"
@@ -31,9 +30,10 @@ type Prop = {
 export default function AddToAlbumDialog({ imageId }: Prop) {
     const [albumName, setAlbumName] = useState("")
     const [open, setOpen] = useState(false)
+    const [dialogOpen, setDialogOpen] = useState(false)
 
     return (
-        <DropdownMenu >
+        <DropdownMenu open={dialogOpen} onOpenChange={setDialogOpen}>
             <DropdownMenuTrigger asChild>
                 <Button variant="outline" className="w-8 h-8 p-0">
                     <Menu />
@@ -41,7 +41,15 @@ export default function AddToAlbumDialog({ imageId }: Prop) {
             </DropdownMenuTrigger>
 
             <DropdownMenuContent >
-                <Dialog open={open} onOpenChange={setOpen}>
+                <Dialog
+                    open={open}
+                    onOpenChange={(newOpenState) => {
+                        setOpen(newOpenState);
+                        if (!newOpenState) {
+                            setDialogOpen(false)
+                        }
+                    }}
+                >
                     <DialogTrigger asChild>
                         <div>
                             <Button variant="outline" className="flex gap-2">
