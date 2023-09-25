@@ -56,7 +56,7 @@ export default function AddToAlbumDialog({ imageId }: Prop) {
                                 <FolderPlus />
                                 <h1> Add To Album</h1>
                             </Button>
-                            <Link href={`/edit/${imageId}`}>
+                            <Link href={`/edit?publicId=${encodeURIComponent(imageId)}`}>
                                 <Button variant="ghost" className="w-full flex gap-2 justify-start px-1">
                                     <Pencil size={22} />
                                     <h1>Edit</h1>
