@@ -22,7 +22,15 @@ export default function EditPage({ searchParams }: Props) {
                     <h1 className="text-4xl font-bold">Edit {publicId}</h1>
                 </div>
 
-                <Button onClick={() => setTransformation("generative-fill")}>Generative Fill</Button>
+                <div className="flex gap-4">
+                    <Button variant="ghost" onClick={() => setTransformation(undefined)}>
+                        Clear All
+                    </Button>
+
+                    <Button onClick={() => setTransformation("generative-fill")}>
+                        Generative Fill
+                    </Button>
+                </div>
 
                 <div className="grid grid-cols-2 gap-12">
                     <CldImage
