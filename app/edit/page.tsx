@@ -13,7 +13,7 @@ type Props = {
 
 export default function EditPage({ searchParams }: Props) {
     const publicId = searchParams.publicId
-    const [transformation, setTransformation] = useState<undefined | "generative-fill">()
+    const [transformation, setTransformation] = useState<undefined | "generative-fill" | "blur" | "grayscale" | "pixelate">()
 
     return (
         <section>
@@ -24,11 +24,23 @@ export default function EditPage({ searchParams }: Props) {
 
                 <div className="flex gap-4">
                     <Button variant="ghost" onClick={() => setTransformation(undefined)}>
-                        Clear All
+                        Clear
                     </Button>
 
                     <Button onClick={() => setTransformation("generative-fill")}>
                         Generative Fill
+                    </Button>
+
+                    <Button onClick={() => setTransformation("blur")}>
+                        Blur
+                    </Button>
+
+                    <Button onClick={() => setTransformation("grayscale")}>
+                        Grayscale
+                    </Button>
+
+                    <Button onClick={() => setTransformation("pixelate")}>
+                        Pixelate
                     </Button>
                 </div>
 
@@ -48,6 +60,42 @@ export default function EditPage({ searchParams }: Props) {
                             height={200}
                             crop="pad" // Returns the given size with padding
                             fillBackground // Uses AI to extend image
+                        />
+                    }
+
+                    {transformation === "blur" &&
+                        <CldImage
+                            src={publicId}
+                            alt="Blurred image"
+                            width={300}
+                            height={200}
+                            // @ts-ignore
+                            blur="800"
+                        // ignored because i got this property from cloudinary docs
+                        />
+                    }
+
+                    {transformation === "grayscale" &&
+                        <CldImage
+                            src={publicId}
+                            alt="Grayscaled image"
+                            width={300}
+                            height={200}
+                            // @ts-ignore
+                            grayscale
+                        // ignored because i got this property from cloudinary docs
+                        />
+                    }
+
+                    {transformation === "pixelate" &&
+                        <CldImage
+                            src={publicId}
+                            alt="Pixelated image"
+                            width={300}
+                            height={200}
+                            // @ts-ignore
+                            pixelate
+                        // ignored because i got this property from cloudinary docs
                         />
                     }
                 </div>
