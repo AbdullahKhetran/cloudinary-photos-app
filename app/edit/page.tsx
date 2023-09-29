@@ -13,7 +13,7 @@ type Props = {
 
 export default function EditPage({ searchParams }: Props) {
     const publicId = searchParams.publicId
-    const [transformation, setTransformation] = useState<undefined | "generative-fill" | "blur" | "grayscale" | "pixelate">()
+    const [transformation, setTransformation] = useState<undefined | "generative-fill" | "blur" | "grayscale" | "pixelate" | "bg-remove">()
 
     return (
         <section>
@@ -41,6 +41,10 @@ export default function EditPage({ searchParams }: Props) {
 
                     <Button onClick={() => setTransformation("pixelate")}>
                         Pixelate
+                    </Button>
+
+                    <Button onClick={() => setTransformation("bg-remove")}>
+                        Remove Background
                     </Button>
                 </div>
 
@@ -96,6 +100,16 @@ export default function EditPage({ searchParams }: Props) {
                             // @ts-ignore
                             pixelate
                         // ignored because i got this property from cloudinary docs
+                        />
+                    }
+
+                    {transformation === "bg-remove" &&
+                        <CldImage
+                            src={publicId}
+                            alt="Image without background"
+                            width={300}
+                            height={200}
+                            removeBackground
                         />
                     }
                 </div>
