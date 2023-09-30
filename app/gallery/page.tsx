@@ -10,10 +10,18 @@ export type SearchResult = {
     tags: string[]
 }
 
-export default async function GalleryPage() {
+type SearchProps = {
+    searchParams: {
+        search: string
+    }
+}
+
+export default async function GalleryPage({ searchParams: { search } }: SearchProps) {
+
+    console.log("search string is ", search)
 
     const result = await cloudinary.v2.search
-        .expression('resource_type:image')
+        .expression(search ? `resource_type:image AND tags=${search}` : "resource_type:image")
         .sort_by('created_at', 'desc')
         .with_field("tags")
         .max_results(20)
@@ -21,6 +29,7 @@ export default async function GalleryPage() {
 
     // @ts-ignore
     console.log(result.rate_limit_remaining)
+    console.log(result.resources.length)
 
     return (
         <section>
@@ -30,7 +39,7 @@ export default async function GalleryPage() {
                     <UploadButton />
                 </div>
 
-                <SearchBar />
+                <SearchBar searchValue={search} />
 
                 <ImageGrid images={result.resources}
                     getImage={(imageData: SearchResult) => {
