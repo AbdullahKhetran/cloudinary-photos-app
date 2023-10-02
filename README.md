@@ -17,12 +17,10 @@ This [tutorial](https://www.youtube.com/watch?v=MC6D4vylKTc) by [Web Dev Cody](h
 git clone https://github.com/AbdullahKhetran/cloudinary-photos-app.git
 ```
 
-2. Refer to Cloudinary [documentation](https://next.cloudinary.dev/installation) and add the following evironment variables
-```
-NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=""
-NEXT_PUBLIC_UPLOAD_PRESET_ID=""
-CLOUDINARY_URL=""
-```
+2. Add environment variables
+`NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME` from [dashboard](https://console.cloudinary.com)
+`NEXT_PUBLIC_UPLOAD_PRESET_ID` from [settings](https://console.cloudinary.com/settings/upload)
+`CLOUDINARY_URL` from [dashboard](https://console.cloudinary.com)
 
 3. Install the packages
 ```
