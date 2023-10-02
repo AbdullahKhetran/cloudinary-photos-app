@@ -18,7 +18,7 @@ type SearchProps = {
 
 export default async function GalleryPage({ searchParams: { search } }: SearchProps) {
 
-    console.log("search string is ", search)
+    // console.log("search string is ", search)
 
     const result = await cloudinary.v2.search
         .expression(search ? `resource_type:image AND tags=${search}` : "resource_type:image")
@@ -28,8 +28,8 @@ export default async function GalleryPage({ searchParams: { search } }: SearchPr
         .execute() as { resources: SearchResult[] }
 
     // @ts-ignore
-    console.log(result.rate_limit_remaining)
-    console.log(result.resources.length)
+    // console.log(result.rate_limit_remaining)
+    // console.log(result.resources.length)
 
     return (
         <section>
