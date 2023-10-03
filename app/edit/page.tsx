@@ -1,6 +1,8 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 import { CldImage } from "next-cloudinary"
 import { useState } from "react"
 
@@ -13,7 +15,17 @@ type Props = {
 
 export default function EditPage({ searchParams }: Props) {
     const publicId = searchParams.publicId
-    const [transformation, setTransformation] = useState<undefined | "generative-fill" | "blur" | "grayscale" | "pixelate" | "bg-remove">()
+    const [transformation, setTransformation] = useState<
+        undefined
+        | "generative-fill"
+        | "blur"
+        | "grayscale"
+        | "pixelate"
+        | "bg-remove"
+    >();
+
+    const [pendingPrompt, setPendingPrompt] = useState("")
+    const [prompt, setPrompt] = useState("")
 
     return (
         <section>
@@ -27,9 +39,22 @@ export default function EditPage({ searchParams }: Props) {
                         Clear
                     </Button>
 
-                    <Button onClick={() => setTransformation("generative-fill")}>
-                        Generative Fill
-                    </Button>
+                    <div className="flex flex-col gap-2">
+                        <Button onClick={() => {
+                            setTransformation("generative-fill");
+                            setPrompt(pendingPrompt)
+                        }}
+                        >
+                            Generative Fill
+                        </Button>
+
+                        <Label>Prompt</Label>
+                        <Input
+                            value={pendingPrompt}
+                            onChange={e => setPendingPrompt(e.currentTarget.value)}
+                            placeholder="Christmas tree"
+                        />
+                    </div>
 
                     <Button onClick={() => setTransformation("blur")}>
                         Blur
@@ -63,7 +88,10 @@ export default function EditPage({ searchParams }: Props) {
                             width={300}
                             height={200}
                             crop="pad" // Returns the given size with padding
-                            fillBackground // Uses AI to extend image
+                            // Uses AI to extend image
+                            fillBackground={{
+                                prompt: prompt
+                            }}
                         />
                     }
 
