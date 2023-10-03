@@ -7,6 +7,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 
 import { FolderClosed, Heart, Image } from 'lucide-react'
+import FolderList from '@/components/nested-folders'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -48,6 +49,8 @@ function SideBar() {
             Albums
           </Button>
         </Link>
+
+        <FolderList />
 
         <Link href="favorites" >
           <Button variant="ghost" className='md:hidden'>
