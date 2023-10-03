@@ -19,11 +19,11 @@ git clone https://github.com/AbdullahKhetran/cloudinary-photos-app.git
 
 2. Add environment variables
 
-    `NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME` from [dashboard](https://console.cloudinary.com)
+    `NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME` from [cloudinary dashboard](https://console.cloudinary.com)
 
-    `NEXT_PUBLIC_UPLOAD_PRESET_ID` from [settings](https://console.cloudinary.com/settings/upload)
+    `NEXT_PUBLIC_UPLOAD_PRESET_ID` from [media settings](https://console.cloudinary.com/settings/upload)
 
-    `CLOUDINARY_URL` from [dashboard](https://console.cloudinary.com)
+    `CLOUDINARY_URL` from [cloudinary dashboard](https://console.cloudinary.com)
 
 3. Install the packages
 ```
