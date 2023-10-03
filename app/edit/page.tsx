@@ -31,7 +31,7 @@ export default function EditPage({ searchParams }: Props) {
         <section>
             <div className="flex flex-col gap-8">
                 <div className="flex justify-between">
-                    <h1 className="text-4xl font-bold">Edit {publicId}</h1>
+                    <h1 className="text-4xl font-bold">Edit Image</h1>
                 </div>
 
                 <div className="flex gap-4">
