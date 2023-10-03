@@ -2,11 +2,14 @@ import './globals.css'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Inter } from 'next/font/google'
+import Image from 'next/image'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 
-import { FolderClosed, Heart, Image } from 'lucide-react'
+import { FolderClosed, Heart } from 'lucide-react'
+import { Image as ImageIcon } from 'lucide-react'
+
 import FolderList from '@/components/nested-folders'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -24,17 +27,15 @@ function SideBar() {
       <h2 className="text-lg font-bold self-center md:self-start md:px-4">
         Manage
       </h2>
+
       <div className="flex flex-col gap-1 items-center md:items-start">
         <Link href="/gallery" >
           <Button variant="ghost" className='md:hidden'>
-            {/* disabling es-lint because it is treating Image as component rather than icon from lucide react */}
-            {/* eslint-disable-next-line */}
-            <Image size={32} />
+            <ImageIcon size={32} />
           </Button>
 
           <Button variant="ghost" className="w-full hidden md:flex md:gap-2 md:justify-start">
-            {/* eslint-disable-next-line */}
-            <Image />
+            <ImageIcon />
             Gallery
           </Button>
         </Link>
@@ -79,6 +80,12 @@ export default function RootLayout({
 
         <div className="border-b ">
           <div className="flex h-16 items-center px-4 container">
+            <Image
+              src="/album.png"
+              width="50"
+              height="50"
+              alt="Icon of photo album app"
+            />
             PHOTOS APP
             <div className="ml-auto flex items-center space-x-4">
 
