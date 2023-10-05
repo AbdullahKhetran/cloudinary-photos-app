@@ -80,13 +80,15 @@ export default function RootLayout({
 
         <div className="border-b ">
           <div className="flex h-16 items-center px-4 container">
-            <Image
-              src="/album.png"
-              width="50"
-              height="50"
-              alt="Icon of photo album app"
-            />
-            PHOTOS APP
+            <Link href="/gallery" className='flex items-center'>
+              <Image
+                src="/album.png"
+                width="50"
+                height="50"
+                alt="Icon of photo album app"
+              />
+              <h1>PHOTOS APP</h1>
+            </Link>
             <UserCircle2 size={36} strokeWidth={1} className='ml-auto' />
           </div>
         </div>
