@@ -39,7 +39,8 @@ export default async function GalleryPage({ searchParams: { search } }: SearchPr
                     <UploadButton />
                 </div>
 
-                <SearchBar searchValue={search} />
+                {/* provided key so it re-renders */}
+                <SearchBar key={search} searchValue={search} />
 
                 <ImageGrid images={result.resources}
                     getImage={(imageData: SearchResult) => {

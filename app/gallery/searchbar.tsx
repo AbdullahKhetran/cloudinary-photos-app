@@ -13,6 +13,10 @@ export default function SearchBar({ searchValue }: { searchValue: string }) {
 
     useEffect(() => {
         setTagName(searchValue)
+
+        return () => {
+            setTagName("");
+        }
     }, [searchValue])
 
     return (
