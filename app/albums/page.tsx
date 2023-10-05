@@ -13,7 +13,7 @@ export default async function AlbumsPage() {
     // console.log(foldersResult)
 
     const folders: Folder[] = foldersResult.folders
-    console.log(folders)
+    // console.log(folders)
 
     return (
         <section>
