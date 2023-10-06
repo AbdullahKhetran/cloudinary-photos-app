@@ -23,7 +23,7 @@ export default function SearchBar({ searchValue }: { searchValue: string }) {
         <form
             onSubmit={(e) => {
                 e.preventDefault();
-                router.replace(`/gallery?search=${encodeURIComponent(tagName)}`);
+                router.push(`/gallery?search=${encodeURIComponent(tagName)}`);
                 router.refresh()
             }}
         >
