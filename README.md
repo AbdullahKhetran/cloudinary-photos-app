@@ -2,6 +2,8 @@ This project is an attempt at building a Photo Album app as specified in this [h
 
 This [tutorial](https://www.youtube.com/watch?v=MC6D4vylKTc) by [Web Dev Cody](https://github.com/webdevcody) has been followed
 
+App is [deployed](https://cloudinary-photos-app-one.vercel.app/) using Vercel
+
 
 ## Technologies Used
 
