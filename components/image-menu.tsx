@@ -1,4 +1,3 @@
-import { SearchResult } from "@/app/gallery/page"
 import AddToAlbumDialog from "@/components/add-to-album-dialog"
 
 type Prop = {

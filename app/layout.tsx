@@ -29,7 +29,7 @@ function SideBar() {
       </h2>
 
       <div className="flex flex-col gap-1 items-center md:items-start">
-        <Link href="/gallery" >
+        <Link href="/" >
           <Button variant="ghost" className='md:hidden'>
             <ImageIcon size={32} />
           </Button>
@@ -78,9 +78,9 @@ export default function RootLayout({
     <html lang="en" className='dark'>
       <body className={inter.className}>
 
-        <div className="border-b ">
-          <div className="flex h-16 items-center px-4 container">
-            <Link href="/gallery" className='flex items-center'>
+        <div className="border-b mx-2">
+          <div className="flex h-16 items-center px-4 ">
+            <Link href="/" className='flex items-center'>
               <Image
                 src="/album.png"
                 width="50"
@@ -93,7 +93,7 @@ export default function RootLayout({
           </div>
         </div>
 
-        <div className='flex'>
+        <div className='flex mx-2'>
           <SideBar />
           <div className='w-full px-4 pt-8'>
             {children}

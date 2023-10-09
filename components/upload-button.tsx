@@ -1,9 +1,16 @@
 "use client"
 
 import { CldUploadButton } from "next-cloudinary";
-import { UploadResult } from "@/app/page";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+
+// only including what i need
+type UploadResult = {
+    event: "success",
+    info: {
+        public_id: string
+    }
+}
 
 export default function UploadButton() {
     const uploadPresetId = process.env.NEXT_PUBLIC_UPLOAD_PRESET_ID;

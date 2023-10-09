@@ -1,43 +1,55 @@
-"use client"
+import UploadButton from "@/components/upload-button";
+import cloudinary from "cloudinary"
+import CloudinaryImage from "@/components/cloudinary-image";
+import ImageGrid from "@/components/image-grid";
+import SearchBar from "@/components/searchbar";
 
-import { CldUploadButton } from 'next-cloudinary';
-import { CldImage } from 'next-cloudinary';
-import { useState } from 'react';
 
-// only including what i need
-export type UploadResult = {
-  event: "success",
-  info: {
-    public_id: string
+export type SearchResult = {
+  public_id: string
+  tags: string[]
+}
+
+type SearchProps = {
+  searchParams: {
+    search: string
   }
 }
 
-export default function Home() {
-  const uploadPresetId = process.env.NEXT_PUBLIC_UPLOAD_PRESET_ID;
+export default async function Home({ searchParams: { search } }: SearchProps) {
+  const result = await cloudinary.v2.search
+    .expression(search ? `resource_type:image AND tags=${search}` : "resource_type:image")
+    .sort_by('created_at', 'desc')
+    .with_field("tags")
+    .max_results(20)
+    .execute() as { resources: SearchResult[] }
 
-  const [imageId, setImageId] = useState("")
+  // @ts-ignore
+  // console.log(result.rate_limit_remaining)
+  // console.log(result.resources.length)
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <CldUploadButton
-        uploadPreset={uploadPresetId}
-        // @ts-ignore
-        onUpload={(result: UploadResult) => {
-          setImageId(result.info.public_id);
-        }}
-      />
+    <section>
+      <div className="flex flex-col gap-8">
+        <div className="flex justify-between">
+          <h1 className="text-4xl font-bold">Gallery</h1>
+          <UploadButton />
+        </div>
 
-      {imageId && (
-        <CldImage
-          width="400"
-          height="300"
-          src={imageId}
-          sizes="100vw"
-          // blurFaces // image manipulation example
-          alt="Description of my image"
+        {/* provided key so it re-renders */}
+        <SearchBar key={search} searchValue={search} />
+
+        <ImageGrid images={result.resources}
+          getImage={(imageData: SearchResult) => {
+            return <CloudinaryImage
+              key={imageData.public_id}
+              public_id={imageData.public_id}
+              tags={imageData.tags}
+            />
+          }}
         />
-      )}
 
-    </main>
+      </div>
+    </section>
   )
 }
