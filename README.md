@@ -15,9 +15,9 @@ App is [deployed](https://cloudinary-photos-app-one.vercel.app/) using Vercel
 ## Running Locally
 
 1. Clone the repository
-```
-git clone https://github.com/AbdullahKhetran/cloudinary-photos-app.git
-```
+    ```
+    git clone https://github.com/AbdullahKhetran/cloudinary-photos-app.git
+    ```
 
 2. Add environment variables
 
@@ -28,13 +28,13 @@ git clone https://github.com/AbdullahKhetran/cloudinary-photos-app.git
     `CLOUDINARY_URL` from [cloudinary dashboard](https://console.cloudinary.com)
 
 3. Install the packages
-```
-npm i
-```
+    ```
+    npm i
+    ```
 
 4. Start the server
-```
-npm run dev
-```
+    ```
+    npm run dev
+    ```
 
 5. Visit [localhost](http://localhost:3000/)
