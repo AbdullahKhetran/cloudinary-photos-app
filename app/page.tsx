@@ -18,7 +18,10 @@ type SearchProps = {
 
 export default async function Home({ searchParams: { search } }: SearchProps) {
   const result = await cloudinary.v2.search
-    .expression(search ? `resource_type:image AND tags=${search}` : "resource_type:image")
+    .expression(search 
+      ? `resource_type:image AND tags=${search} AND asset_folder=photos-app/*` 
+      : "resource_type:image AND asset_folder=photos-app/*" 
+    )
     .sort_by('created_at', 'desc')
     .with_field("tags")
     .max_results(20)

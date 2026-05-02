@@ -20,6 +20,9 @@ export default function UploadButton() {
         <Button asChild>
             <CldUploadButton
                 uploadPreset={uploadPresetId}
+                options={{
+                    folder: "photos-app",
+                }}
                 // @ts-ignore
                 onUpload={(result: UploadResult) => {
                     router.refresh()

@@ -3,7 +3,7 @@ import { Folder } from "@/app/albums/page"
 import Link from "next/link"
 
 export default async function FolderList() {
-    const foldersResult = await cloudinary.v2.api.root_folders()
+    const foldersResult = await cloudinary.v2.api.sub_folders("photos-app")
 
     const folders: Folder[] = foldersResult.folders
 

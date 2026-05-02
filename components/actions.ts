@@ -3,18 +3,18 @@
 import cloudinary from "cloudinary"
 
 export async function addImageToAlbum(imageId: string, album: string) {
-    await cloudinary.v2.api.create_folder(album);
+    const currentPublicId = `${imageId}`
 
-    // to remove any folder in the path and add image to folder at the root
-    let parts = imageId.split("/")
-    if (parts.length > 1) {
-        parts = parts.slice(1)
-    }
-    const imagePublicId = parts.join("/")
+    const targetFolder = `photos-app/${album}`
+    await cloudinary.v2.api.create_folder(targetFolder);
+
+    const imageName = imageId.split("/").pop() as string
+    console.log("imagename", imageName)
+    const newPublicId = `${targetFolder}/${imageName}`
 
     await cloudinary.v2.uploader.rename(
-        imageId,
-        `${album}/${imagePublicId}`
+        currentPublicId,
+        newPublicId
     )
 
 }

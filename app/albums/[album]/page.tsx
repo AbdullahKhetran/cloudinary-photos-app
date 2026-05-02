@@ -10,7 +10,7 @@ export default async function AlbumPage({ params }: { params: { album: string } 
     // console.log(params.album)
 
     const result = await cloudinary.v2.search
-        .expression(`resource_type:image AND folder=${params.album}`)
+        .expression(`resource_type:image AND folder=photos-app/${params.album}`)
         .sort_by('created_at', 'desc')
         .with_field("tags")
         .max_results(20)

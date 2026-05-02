@@ -9,7 +9,7 @@ export type Folder = {
 
 export default async function AlbumsPage() {
 
-    const foldersResult = await cloudinary.v2.api.root_folders()
+    const foldersResult = await cloudinary.v2.api.sub_folders("photos-app")
     // console.log(foldersResult)
 
     const folders: Folder[] = foldersResult.folders
